@@ -4,7 +4,7 @@ The complete, ordered guide to taking this from "VPS with Plesk" to "live site +
 mail + demos." It says exactly what to do, what's already done, and what's left.
 
 - **Server:** IONOS VPS `cian-prod-web-01`, Debian 13.6 + Plesk Obsidian 18.0.80, AMD EPYC 8-core, 480 GB NVMe
-- **IPv4:** `212.227.29.230`  ·  **IPv6:** `2a02:2479:15:2300::1` (host in the `/80`)
+- **IPv4:** `<IPv4>`  ·  **IPv6:** `<IPv6>` (host in the `/80`)
 - **Domains:** `cianomalley.works` (portfolio) · `cianomalley.dev` (demos)
 - **Mail:** self-hosted (Plesk + Roundcube), 4 inboxes + forwarders
 
@@ -28,7 +28,7 @@ mail + demos." It says exactly what to do, what's already done, and what's left.
 ---
 
 ## Before you begin (have ready)
-- **SSH access:** an app like **Termius** (mobile) or Terminal/PowerShell → `ssh root@212.227.29.230`.
+- **SSH access:** an app like **Termius** (mobile) or Terminal/PowerShell → `ssh root@<IPv4>`.
 - **4 mailbox passwords** — you'll paste these into `plesk-setup.sh`.
 - **Your current public IP** (google "what is my IP") — to lock down SSH/Plesk later.
 - Set up an **SSH key** and disable password login early if you can (see §9).
@@ -36,7 +36,7 @@ mail + demos." It says exactly what to do, what's already done, and what's left.
 ---
 
 ## 1. IONOS — reverse DNS (PTR)  ⏳
-IONOS Cloud Panel → **Network → Public IP** → select `212.227.29.230` → set
+IONOS Cloud Panel → **Network → Public IP** → select `<IPv4>` → set
 **Reverse DNS** to `server.cianomalley.works`. Repeat for the IPv6.
 This is required before outbound mail (port 25) works and before mail servers
 trust you. (The firewall is already done.)
@@ -51,7 +51,7 @@ trust you. (The firewall is already done.)
    Re-enable **DNSSEC in Cloudflare** only after it's active.
 
 ## 3. SSH in and run the setup script  ✅ done
-1. `ssh root@212.227.29.230`
+1. `ssh root@<IPv4>`
 2. `plesk-setup.sh` had the **4 mailbox passwords** set (`PW_CIAN`, `PW_HELLO`,
    `PW_ADMIN`, `PW_WEBSITE`) and `IPV6` confirmed with `ip -6 addr show`.
 3. Ran with `bash plesk-setup.sh`.
